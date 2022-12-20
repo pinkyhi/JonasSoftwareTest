@@ -18,35 +18,34 @@ namespace DataAccessLayer.Database
 			DatabaseInstance = new Dictionary<Tuple<string, string>, DataEntity>();
 		}
 
-		public bool Insert(T data)
+		public T Insert(T data)
 		{
 			try
 			{
 				DatabaseInstance.Add(Tuple.Create(data.SiteId, data.CompanyCode), data);
-				return true;
+				return data;
 			}
 			catch
 			{
-				return false;
+				return null;
 			}
 		}
 
-		public bool Update(T data)
+		public T Update(T data)
 		{
 			try
 			{
 				if (DatabaseInstance.ContainsKey(Tuple.Create(data.SiteId, data.CompanyCode)))
 				{
 					DatabaseInstance.Remove(Tuple.Create(data.SiteId, data.CompanyCode));
-					Insert(data);
-					return true;
+					return Insert(data);
 				}
 
-				return false;
+				return null;
 			}
 			catch
 			{
-				return false;
+				return null;
 			}
 		}
 
@@ -143,12 +142,12 @@ namespace DataAccessLayer.Database
 			return dataEntity;
 		}
 
-		public Task<bool> InsertAsync(T data)
+		public Task<T> InsertAsync(T data)
 		{
 			return Task.FromResult(Insert(data));
 		}
 
-		public Task<bool> UpdateAsync(T data)
+		public Task<T> UpdateAsync(T data)
 		{
 			return Task.FromResult(Update(data));
 		}

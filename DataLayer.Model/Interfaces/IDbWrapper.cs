@@ -18,14 +18,14 @@ namespace DataAccessLayer.Model.Interfaces
 		/// </summary>
 		/// <param name="data">object to insert</param>
 		/// <returns>true on success</returns>
-		bool Insert(T data);
+		T Insert(T data);
 
 		/// <summary>
 		/// Update an object in the database.
 		/// </summary>
 		/// <param name="data">object to update</param>
 		/// <returns>true on success</returns>
-		bool Update(T data);
+		T Update(T data);
 
 		/// <summary>
 		/// Find a list of objects based on a linq query.
@@ -68,14 +68,14 @@ namespace DataAccessLayer.Model.Interfaces
 		/// </summary>
 		/// <param name="data">object to insert</param>
 		/// <returns>task for true on success</returns>
-		Task<bool> InsertAsync(T data);
+		Task<T> InsertAsync(T data);
 
 		/// <summary>
 		/// Update an object in the database.
 		/// </summary>
 		/// <param name="data">object to update</param>
 		/// <returns>task for true on success</returns>
-		Task<bool> UpdateAsync(T data);
+		Task<T> UpdateAsync(T data);
 
 		/// <summary>
 		/// Find a list of objects based on a linq query.

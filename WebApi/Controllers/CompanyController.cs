@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
 using BusinessLayer.Model.Interfaces;
+using BusinessLayer.Model.Models;
+using Newtonsoft.Json;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -32,8 +35,17 @@ namespace WebApi.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public async Task<IHttpActionResult> Post([FromBody]CompanyDto company)
         {
+            var newCompany = await _companyService.CreateCompanyAsync(_mapper.Map<CompanyInfo>(company));
+            if(newCompany == null)
+            {
+                return StatusCode(System.Net.HttpStatusCode.NoContent);
+            }
+            else
+            {
+                return Created(Request.RequestUri, _mapper.Map<CompanyDto>(newCompany));
+            }
         }
 
         // PUT api/<controller>/5
