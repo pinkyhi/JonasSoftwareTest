@@ -6,6 +6,7 @@ using AutoMapper;
 using BusinessLayer.Model.Interfaces;
 using BusinessLayer.Model.Models;
 using Newtonsoft.Json;
+using NLog;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -14,11 +15,13 @@ namespace WebApi.Controllers
     {
         private readonly ICompanyService _companyService;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public CompanyController(ICompanyService companyService, IMapper mapper)
+        public CompanyController(ICompanyService companyService, IMapper mapper, ILogger logger)
         {
             _companyService = companyService;
             _mapper = mapper;
+            _logger = logger;
         }
         // GET api/<controller>
         [HttpGet]

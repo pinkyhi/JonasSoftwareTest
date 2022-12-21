@@ -20,6 +20,7 @@ namespace WebApi.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
     using Ninject.WebApi.DependencyResolver;
+    using NLog;
 
     public static class NinjectWebCommon 
     {
@@ -85,6 +86,9 @@ namespace WebApi.App_Start
             kernel.Bind<ICompanyService>().To<CompanyService>();
             kernel.Bind<ICompanyRepository>().To<CompanyRepository>();
             kernel.Bind(typeof(IDbWrapper<>)).To(typeof(InMemoryDatabase<>)).InSingletonScope();
+
+            kernel.Bind<ILogger>().ToMethod(p => LogManager.GetCurrentClassLogger(
+                   p.Request.Target.Member.DeclaringType));
         }
     }
 }
