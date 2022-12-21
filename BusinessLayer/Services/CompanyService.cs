@@ -35,5 +35,16 @@ namespace BusinessLayer.Services
             var result = await _companyRepository.SaveCompanyAsync(_mapper.Map<Company>(companyInfo));
             return _mapper.Map<CompanyInfo>(result);
         }
+
+        public async Task<CompanyInfo> PutCompanyAsync(CompanyInfo companyInfo)
+        {
+            var result = await _companyRepository.UpdateCompanyAsync(_mapper.Map<Company>(companyInfo));
+            return _mapper.Map<CompanyInfo>(result);
+        }
+
+        public async Task DeleteCompanyAsync(BaseInfo key)
+        {
+            await _companyRepository.DeleteCompanyAsync(_mapper.Map<DataEntity>(key));
+        }
     }
 }

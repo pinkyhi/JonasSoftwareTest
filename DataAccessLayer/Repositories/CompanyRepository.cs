@@ -78,5 +78,25 @@ namespace DataAccessLayer.Repositories
 
             return await _companyDbWrapper.InsertAsync(company);
         }
+
+        public async Task<Company> UpdateCompanyAsync(Company company)
+        {
+
+            var result = await _companyDbWrapper.UpdateAsync(company);
+            return result;
+        }
+        public async Task DeleteCompanyAsync(DataEntity key)
+        {
+            var itemRepo = _companyDbWrapper.Find(t =>
+                t.SiteId.Equals(key.SiteId) && t.CompanyCode.Equals(key.CompanyCode))?.FirstOrDefault();
+            if (itemRepo != null)
+            {
+                await _companyDbWrapper.DeleteAsync(t =>t.SiteId.Equals(key.SiteId) && t.CompanyCode.Equals(key.CompanyCode));
+            }
+            else
+            {
+                throw new KeyNotFoundException($"Resource to delete not found: {key}");
+            }
+        }
     }
 }

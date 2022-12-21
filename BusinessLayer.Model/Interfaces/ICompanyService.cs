@@ -9,5 +9,7 @@ namespace BusinessLayer.Model.Interfaces
         Task<IEnumerable<CompanyInfo>> GetAllCompaniesAsync();
         Task<CompanyInfo> GetCompanyByCodeAsync(string companyCode);
         Task<CompanyInfo> CreateCompanyAsync(CompanyInfo companyInfo);
+        Task<CompanyInfo> PutCompanyAsync(CompanyInfo companyInfo);
+        Task DeleteCompanyAsync(BaseInfo key);
     }
 }

@@ -10,5 +10,10 @@ namespace DataAccessLayer.Model.Models
 	{
 		public string SiteId { get; set; }
 		public string CompanyCode { get; set; }
-	}
+
+        public override string ToString()
+        {
+            return $"\nSiteId: {SiteId};\nCompanyCode: {CompanyCode}";
+        }
+    }
 }

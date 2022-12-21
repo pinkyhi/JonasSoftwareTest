@@ -53,14 +53,25 @@ namespace WebApi.Controllers
 
         // PUT api/<controller>/5
         [HttpPut]
-        public void Put(int id, [FromBody]string value)
+        public async Task<IHttpActionResult> Put([FromBody] CompanyDto company)
         {
+            var updatedCompany = await _companyService.PutCompanyAsync(_mapper.Map<CompanyInfo>(company));
+            if (updatedCompany == null)
+            {
+                return StatusCode(System.Net.HttpStatusCode.NoContent);
+            }
+            else
+            {
+                return Ok(_mapper.Map<CompanyDto>(updatedCompany));
+            }
         }
 
         // DELETE api/<controller>/5
         [HttpDelete]
-        public void Delete(int id)
+        public async Task<IHttpActionResult> Delete(BaseDto baseDto)
         {
+            await _companyService.DeleteCompanyAsync(_mapper.Map<BaseInfo>(baseDto));
+            return StatusCode(System.Net.HttpStatusCode.NoContent);
         }
     }
 }
