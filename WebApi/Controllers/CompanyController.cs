@@ -7,10 +7,12 @@ using BusinessLayer.Model.Interfaces;
 using BusinessLayer.Model.Models;
 using Newtonsoft.Json;
 using NLog;
+using WebApi.Filters;
 using WebApi.Models;
 
 namespace WebApi.Controllers
 {
+    [NotImplExceptionFilter]
     public class CompanyController : ApiController
     {
         private readonly ICompanyService _companyService;

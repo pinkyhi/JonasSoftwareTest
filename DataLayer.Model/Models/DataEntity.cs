@@ -13,7 +13,7 @@ namespace DataAccessLayer.Model.Models
 
         public override string ToString()
         {
-            return $"\nSiteId: {SiteId};\nCompanyCode: {CompanyCode}";
+            return $"\nSiteId: {SiteId};\nCompanyCode: {CompanyCode};";
         }
     }
 }
