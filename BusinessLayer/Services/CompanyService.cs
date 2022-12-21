@@ -18,15 +18,15 @@ namespace BusinessLayer.Services
             _companyRepository = companyRepository;
             _mapper = mapper;
         }
-        public IEnumerable<CompanyInfo> GetAllCompanies()
+        public async Task<IEnumerable<CompanyInfo>> GetAllCompaniesAsync()
         {
-            var res = _companyRepository.GetAll();
-            return _mapper.Map<IEnumerable<CompanyInfo>>(res);
+            var result = await _companyRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<CompanyInfo>>(result);
         }
 
-        public CompanyInfo GetCompanyByCode(string companyCode)
+        public async Task<CompanyInfo> GetCompanyByCodeAsync(string companyCode)
         {
-            var result = _companyRepository.GetByCode(companyCode);
+            var result = await _companyRepository.GetByCodeAsync(companyCode);
             return _mapper.Map<CompanyInfo>(result);
         }
 

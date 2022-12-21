@@ -46,6 +46,16 @@ namespace DataAccessLayer.Repositories
 
             return _companyDbWrapper.Insert(company);
         }
+        public async Task<IEnumerable<Company>> GetAllAsync()
+        {
+            return await _companyDbWrapper.FindAllAsync();
+        }
+
+        public async Task<Company> GetByCodeAsync(string companyCode)
+        {
+            var result = await _companyDbWrapper.FindAsync(t => t.CompanyCode.Equals(companyCode));
+            return result.FirstOrDefault();
+        }
 
         public async Task<Company> SaveCompanyAsync(Company company)
         {

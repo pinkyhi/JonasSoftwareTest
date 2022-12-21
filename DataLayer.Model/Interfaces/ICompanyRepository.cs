@@ -12,6 +12,8 @@ namespace DataAccessLayer.Model.Interfaces
         IEnumerable<Company> GetAll();
         Company GetByCode(string companyCode);
         Company SaveCompany(Company company);
+        Task<IEnumerable<Company>> GetAllAsync();
+        Task<Company> GetByCodeAsync(string companyCode);
         Task<Company> SaveCompanyAsync(Company company);
     }
 }
