@@ -5,6 +5,7 @@ using BusinessLayer.Model.Models;
 using DataAccessLayer.Model.Interfaces;
 using System.Threading.Tasks;
 using DataAccessLayer.Model.Models;
+using System;
 
 namespace BusinessLayer.Services
 {
@@ -32,12 +33,14 @@ namespace BusinessLayer.Services
 
         public async Task<CompanyInfo> CreateCompanyAsync(CompanyInfo companyInfo)
         {
+            companyInfo.LastModified = DateTime.Now;
             var result = await _companyRepository.SaveCompanyAsync(_mapper.Map<Company>(companyInfo));
             return _mapper.Map<CompanyInfo>(result);
         }
 
         public async Task<CompanyInfo> PutCompanyAsync(CompanyInfo companyInfo)
         {
+            companyInfo.LastModified = DateTime.Now;
             var result = await _companyRepository.UpdateCompanyAsync(_mapper.Map<Company>(companyInfo));
             return _mapper.Map<CompanyInfo>(result);
         }
