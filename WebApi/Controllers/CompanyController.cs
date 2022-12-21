@@ -21,6 +21,7 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
         // GET api/<controller>
+        [HttpGet]
         public async Task<IEnumerable<CompanyDto>> GetAll()
         {
             var items = await _companyService.GetAllCompaniesAsync();
@@ -28,6 +29,7 @@ namespace WebApi.Controllers
         }
 
         // GET api/<controller>/5
+        [HttpGet]
         public async Task<CompanyDto> Get(string companyCode)
         {
             var item = await _companyService.GetCompanyByCodeAsync(companyCode);
@@ -35,6 +37,7 @@ namespace WebApi.Controllers
         }
 
         // POST api/<controller>
+        [HttpPost]
         public async Task<IHttpActionResult> Post([FromBody]CompanyDto company)
         {
             var newCompany = await _companyService.CreateCompanyAsync(_mapper.Map<CompanyInfo>(company));
@@ -49,11 +52,13 @@ namespace WebApi.Controllers
         }
 
         // PUT api/<controller>/5
+        [HttpPut]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/<controller>/5
+        [HttpDelete]
         public void Delete(int id)
         {
         }
