@@ -15,13 +15,18 @@ namespace WebApi.Filters
                 context.Response = new HttpResponseMessage(HttpStatusCode.NotFound);
                 context.Response.Content = new StringContent(context.Exception.Message);
             }
+            else if (context.Exception is ArgumentException)
+            {
+                context.Response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                context.Response.Content = new StringContent(context.Exception.Message);
+            }
             else if (context.Exception is NotImplementedException)
             {
                 context.Response = new HttpResponseMessage(HttpStatusCode.NotImplemented);
             }
             else
             {
-                context.Response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                context.Response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
                 context.Response.Content = new StringContent(context.Exception.Message);
             }
         }

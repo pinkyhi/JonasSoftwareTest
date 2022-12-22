@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AutoMapper;
@@ -14,13 +13,13 @@ using WebApi.Models;
 namespace WebApi.Controllers
 {
     [NotImplExceptionFilter]
-    public class CompanyController : ApiController
+    public class EmployeeController : ApiController
     {
         private readonly ICompanyService _companyService;
         private readonly IMapper _mapper;
         private readonly ILogger _logger;
 
-        public CompanyController(ICompanyService companyService, IMapper mapper, ILogger logger)
+        public EmployeeController(ICompanyService companyService, IMapper mapper, ILogger logger)
         {
             _companyService = companyService;
             _mapper = mapper;
@@ -28,40 +27,26 @@ namespace WebApi.Controllers
         }
         // GET api/<controller>
         [HttpGet]
-        public async Task<IHttpActionResult> GetAll()
+        public async Task<IEnumerable<CompanyDto>> GetAll()
         {
             var items = await _companyService.GetAllCompaniesAsync();
-            if (items != null && items.Count() > 0)
-            {
-                return Ok(_mapper.Map<IEnumerable<CompanyDto>>(items));
-            }
-            else
-            {
-                return StatusCode(System.Net.HttpStatusCode.NoContent);
-            }
+            return _mapper.Map<IEnumerable<CompanyDto>>(items);
         }
 
         // GET api/<controller>/5
         [HttpGet]
-        public async Task<IHttpActionResult> Get(string companyCode)
+        public async Task<CompanyDto> Get(string companyCode)
         {
             var item = await _companyService.GetCompanyByCodeAsync(companyCode);
-            if (item == null)
-            {
-                return StatusCode(System.Net.HttpStatusCode.NoContent);
-            }
-            else
-            {
-                return Ok(_mapper.Map<CompanyDto>(item));
-            }
+            return _mapper.Map<CompanyDto>(item);
         }
 
         // POST api/<controller>
         [HttpPost]
-        public async Task<IHttpActionResult> Post([FromBody]CompanyDto company)
+        public async Task<IHttpActionResult> Post([FromBody] CompanyDto company)
         {
             var newCompany = await _companyService.CreateCompanyAsync(_mapper.Map<CompanyInfo>(company));
-            if(newCompany == null)
+            if (newCompany == null)
             {
                 return StatusCode(System.Net.HttpStatusCode.NoContent);
             }

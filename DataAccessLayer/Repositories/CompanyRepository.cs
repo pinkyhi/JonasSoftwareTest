@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DataAccessLayer.Model.Interfaces;
 using DataAccessLayer.Model.Models;
+using Newtonsoft.Json;
 
 namespace DataAccessLayer.Repositories
 {
@@ -95,8 +98,14 @@ namespace DataAccessLayer.Repositories
             }
             else
             {
-                throw new KeyNotFoundException($"Resource to delete not found: {key}");
+                throw new KeyNotFoundException($"Resource to delete not found: {JsonConvert.SerializeObject(key)}");
             }
+        }
+
+        public async Task<Company> GetCompanyAsync(Expression<Func<Company, bool>> expression)
+        {
+            var result = await _companyDbWrapper.FindAsync(expression);
+            return result?.FirstOrDefault();
         }
     }
 }

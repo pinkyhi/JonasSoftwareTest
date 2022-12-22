@@ -167,12 +167,16 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\EmloyeeController.cs" />
     <Compile Include="Filters\NotImplExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArSubledgerDto.cs" />
     <Compile Include="Models\CompanyDto.cs" />
+    <Compile Include="Models\EmployeeDto.cs" />
+    <Compile Include="Models\EmployeeIndexDto.cs" />
+    <Compile Include="Models\Responses\EmployeeResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
