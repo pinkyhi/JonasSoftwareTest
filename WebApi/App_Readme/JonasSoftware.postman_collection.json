@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "efb97739-974c-4712-86b7-9156754cf8bc",
+		"name": "JonasSoftware",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25015047"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:51481/api/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:51481/api/company/b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"company",
+								"b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostCompany",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"SiteId\":\"b\",\r\n    \"CompanyCode\":\"b\",\r\n    \"CompanyName\": \"b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:51481/api/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutCompany",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SiteId\": \"b\",\r\n    \"CompanyCode\": \"b\",\r\n    \"CompanyName\": \"c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:51481/api/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCompany",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SiteId\": \"b\",\r\n    \"CompanyCode\": \"b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:51481/api/company",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"company"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:51481/api/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:51481/api/employee/b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"employee",
+								"b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ASSESSMENT GetByKey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:51481/api/employee?employeeCode=b&siteId=b&companyCode=b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"employee"
+							],
+							"query": [
+								{
+									"key": "employeeCode",
+									"value": "b"
+								},
+								{
+									"key": "siteId",
+									"value": "b"
+								},
+								{
+									"key": "companyCode",
+									"value": "b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PostEmployee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SiteId\": \"b\",\r\n    \"CompanyCode\": \"b\",\r\n    \"EmployeeCode\": \"b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:51481/api/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutEmployee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SiteId\": \"b\",\r\n    \"CompanyCode\": \"b\",\r\n    \"EmployeeCode\": \"b\",\r\n    \"EmployeeName\": \"c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:51481/api/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEmployee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"SiteId\": \"b\",\r\n    \"CompanyCode\": \"b\",\r\n    \"EmployeeCode\": \"b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:51481/api/employee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "51481",
+							"path": [
+								"api",
+								"employee"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
